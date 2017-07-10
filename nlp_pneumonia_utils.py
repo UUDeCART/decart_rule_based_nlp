@@ -53,12 +53,14 @@ def read_annotations(archive_file, force_redownload = False):
 
 def read_doc_annotations(archive_file, force_redownload = False):
     print('Reading annotations from file : ' + archive_file)
-    filename = archive_file.split('/')[-1]
     
     if 'http' in archive_file:
         if force_redownload or not os.path.isfile(filename):
             print('Downloading remote file : '+ archive_file)
             urllib.request.urlretrieve(archive_file, filename)
+            filename = archive_file.split('/')[-1]
+    else:
+        filename = archive_file
     
     annotated_doc_map = {}
     
