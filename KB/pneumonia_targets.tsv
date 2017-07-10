@@ -1,0 +1,4 @@
+Lex	Type	Regex	Direction	Codes
+pneumonia	EVIDENCE_OF_PNEUMONIA	\bpneumonia[s]?\b		
+consolidation	EVIDENCE_OF_PNEUMONIA			
+infiltrate	EVIDENCE_OF_PNEUMONIA			
