@@ -2,6 +2,7 @@ import zipfile
 import codecs
 import sklearn.metrics
 import pandas as pd
+from pyConTextNLP import pyConTextGraph
 
 # this class encapsulates all data related to a span (text sequence) annotation
 # including the text it "covers" and the type (i.e. "concept") of the annotation
@@ -145,3 +146,8 @@ def pneumonia_html_markup(anno_doc):
                                                  colors=colors,
                                                  default_color=default_color)]))
     return html
+
+def clearPyConTextRegularExpressions():
+    if len(pyConTextGraph.compiledRegExprs) > 0:
+        print('Clearing pyConText compiled regular expressions')
+        pyConTextGraph.compiledRegExprs = {}
