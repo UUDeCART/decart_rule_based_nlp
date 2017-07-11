@@ -1,0 +1,19 @@
+Sample Name: Gen Med SOAP - 1  Description:  Sample progress note - Gen Med.
+(Medical Transcription Sample Report)
+SUBJECTIVE:   His blood pressure up.  The last two to three times he has been in here, it has been up.  He has assured me before that his blood pressure is under good control at home, but he does not bring any blood pressures in with him this time, which bothers me.  
+
+OBJECTIVE:
+GENERAL: Weight, blood pressure and pulse are all recorded on the chart.
+SKIN: Moist, warm, nonicteric. No obvious skin lesions that are pathological are noted.
+HEENT: Normal cephalic. Pupils are both equal and reactive to light and accommodation. Extraocular movements intact. Conjunctiva and sclera are clear and benign. Tympanic membranes; no erythema or fluid. 
+LIPS/GUMS: No swelling, cyanosis or ulcers noted. 
+MOUTH: Normal dentition with no abnormalities noted in the mouth.
+NECK: Supple without adenopathy or thyromegaly. No abnormal neck masses.
+LUNGS: Clear to auscultation. 
+HEART: S1, S2 normal. No S3, S4, rubs or murmurs. No peripheral edema.
+ABDOMEN: No masses or tenderness. 
+NEURO: Patient is awake, alert, oriented X 3 with no focal neurologic signs. 
+Cranial nerves are intact. Reflexes are normal and symmetrical. Strength and sensation are within normal limits. 
+EXTREMITIES: No weakness, edema or ulcers, normal gait, no cyanosis, clubbing or petechiae. No joint stiffness or swelling.  He has surgical scars on his abdomen and ankle.  
+
+ASSESSMENT AND PLAN:  I am going to increase his Toprol to 100.  Also he is developing some stasis dermatitis with superficial erosions.  I gave him a prescription for some zinc oxide and told him to put gauze dressings over the wound in the foot.  I also gave him a prescription for Nizoral shampoo and refilled his other medications.  He needs to come in for his fasting blood work as well.  I will see him again in three months.

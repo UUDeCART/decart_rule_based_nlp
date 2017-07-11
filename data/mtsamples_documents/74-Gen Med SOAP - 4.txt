@@ -1,0 +1,13 @@
+Sample Name: Gen Med SOAP - 4  Description:  General Medicine SOAP note.
+(Medical Transcription Sample Report)
+S:  ABC is in today for a followup of her atrial fibrillation.  They have misplaced the Cardizem.  She is not on this and her heart rate is up just a little bit today.  She does complain of feeling dizziness, some vertigo, some lightheadedness, and has attributed this to the Coumadin therapy.  She is very adamant that she wants to stop the Coumadin.  She is tired of blood draws.  We have had a difficult time getting her regulated.  No chest pains.  No shortness of breath.  She is moving around a little bit better.  Her arm does not hurt her.  Her back pain is improving as well.
+
+O:  Vital signs as per chart.  Respirations 15.  Exam:  Nontoxic.  No acute distress.  Alert and oriented.  HEENT:  TMs are clear bilaterally without erythema or bulging.  Clear external canals.  Clear tympanic.  Conjunctivae are clear.  Clear nasal mucosa.  Clear oropharynx with moist mucous membranes.  NECK is soft and supple.  LUNGS are clear to auscultation.  HEART is irregularly irregular, mildly tachycardic.  ABDOMEN is soft and nontender.  EXTREMITIES:  No cyanosis, no clubbing, no edema.
+
+EKG shows atrial fibrillation with a heart rate of 104.
+
+A:
+1.    Atrial fibrillation.
+2.    Dizziness.
+
+P:  Back on the Cardizem, which they have at home.  If they cannot find it, they will call us and we will call this out to Skagway.  I did talk to her and her husband at length regarding atrial fibrillation and Coumadin and the risks for stroke without the Coumadin.  She states that she is &quot;I am willing to take that risk.&quot;  If she does not want to be on the Coumadin anymore, then I would recommend at least taking a baby aspirin a day.  Both her and her husband understand this very clearly that she is at higher risk for having a stroke off of the Coumadin and she wishes to stay off this, therefore we do not need a pro-time today.  We will have her stop her Coumadin and have her followup in one week.  She will need the cast removed and the x-ray of her left wrist at that visit in hopes that we can place her in a short-arm cast over the next two weeks.  Followup sooner if needed.
