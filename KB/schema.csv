@@ -1,0 +1,12 @@
+# Lines that start with the # symbol are comments and are ignored
+# The schema consists of a numeric value, followed by a label (e.g. "AMBIVALENT"), 
+# followed by a Python express that can evaluate to True or False
+# The Python expression uses LABELS from the rules. processReports.py will substitute 
+# the LABEL with any matched values identified from 
+# the corresponding rules
+1,Negative,DISEASE_STATE == 0
+2,Positive,DISEASE_STATE == 1 
+#1,Negative/Certain,DISEASE_STATE == 0 and CERTAINTY_STATE == 1
+#2,Negative/Uncertain,DISEASE_STATE == 0 and CERTAINTY_STATE == 0
+#3,Positive/Uncertain,DISEASE_STATE == 1 and CERTAINTY_STATE == 0
+#4,Positive/Certain,DISEASE_STATE == 1 and CERTAINTY_STATE == 1
