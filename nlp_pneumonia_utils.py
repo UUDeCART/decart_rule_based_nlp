@@ -133,7 +133,7 @@ def mark_text(txt,nodes,colors = {"name":"red","pet":"blue"},default_color="blac
                          # this was not being passed through 
                         default_color = default_color)
     
-def pneumonia_html_markup(anno_doc):
+def pneumonia_annotation_html_markup(anno_doc):
     from pyConTextNLP.display.html import __sort_by_span
     # this bit mimics 'mark_document_with_html' from pyConTextNLP.display.html
     colors = {}
