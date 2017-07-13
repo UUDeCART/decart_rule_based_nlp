@@ -1,3 +1,4 @@
+import os
 import zipfile
 import codecs
 import sklearn.metrics
