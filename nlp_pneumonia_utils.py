@@ -36,18 +36,21 @@ class AnnotatedDocument(object):
 
 
 class DocumentClassifier(object):
-    def __init__(self, ruleFile, debug=False, rule_string=None):
+    def __init__(self, ruleFile, debug=False, modifiers=None,targets=None):
         self.rules = {}
         self.rules_ele_list = {}
         self.conclusions = []
         self.debug = debug
-        self.modifiers = None
-        self.targets = None
+        self.modifiers = modifiers
+        self.targets = targets
         if ruleFile is not None:
-            f = open(os.path.join(os.getcwd(), ruleFile), 'r')
-            rows = f.readlines()
-        if rule_string is not None:
-            rows = rule_string.split('\n')
+            if ruleFile.endswith('.csv') or ruleFile.endswith('.tsv') or ruleFile.endswith('.txt'):
+                f = open(os.path.join(os.getcwd(), ruleFile), 'r')
+                rows = f.readlines()
+            else:
+                rows = ruleFile.split('\n')
+        else:
+            print('DocumentClassifier can only take rules in string or in csv, tsv or txt file')
         priority = 0
         for row in rows:
             row = row.strip()
