@@ -36,7 +36,7 @@ class AnnotatedDocument(object):
 
 
 class DocumentClassifier(object):
-    def __init__(self, ruleFile, debug=False, modifiers=None,targets=None):
+    def __init__(self, ruleFile, debug=False, modifiers=None, targets=None):
         self.rules = {}
         self.rules_ele_list = {}
         self.conclusions = []
@@ -93,6 +93,12 @@ class DocumentClassifier(object):
                 if annotation_type not in current_conclusions or current_conclusions[annotation_type] > priority:
                     current_conclusions[annotation_type] = priority
                 break;
+
+    def predict(self, doc, expected_value='indicate_pneumonia'):
+        conclusions = self.classify_doc(doc)
+        if expected_value in conclusions:
+            return 1
+        return 0
 
     def classify_doc(self, doc):
         if self.modifiers is None or self.targets is None:
