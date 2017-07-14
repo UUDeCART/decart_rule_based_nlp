@@ -1,0 +1,4 @@
+indicate_pneumonia	span_positive_pneumonia_evidence	definite_existence
+indicate_pneumonia	span_positive_pneumonia_evidence	probable_existence
+indicate_pneumonia	span_positive_pneumonia_evidence
+no_indicate_pneumonia
