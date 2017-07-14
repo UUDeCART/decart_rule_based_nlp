@@ -359,8 +359,6 @@ seen best	PROBABLE_EXISTENCE		backward
 signs of	PROBABLE_EXISTENCE		bidirectional				
 was not excluded	AMBIVALENT_EXISTENCE	(was|were) not excluded	backward				
 if	HYPOTHETICAL		forward				
-decrease	HISTORICAL	decrease|decreased|decreasing|reduction|reduced	bidirectional				
-increase	HISTORICAL	increase|increasing|increased	bidirectional				
 possibly	PROBABLE_EXISTENCE		forward				
 decrease the likelihood	PROBABLE_NEGATED_EXISTENCE	decreas[a-z]+(\sthe)? likelihood	forward				
 suspect	PROBABLE_EXISTENCE		forward				
