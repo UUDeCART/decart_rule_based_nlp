@@ -5,6 +5,9 @@ import sklearn.metrics
 import pandas as pd
 from pyConTextNLP import pyConTextGraph
 from textblob import TextBlob
+from radnlp.data import classrslts
+import radnlp.view as rview
+from IPython.display import display, HTML, Image
 
 # this class encapsulates all data related to a span (text sequence) annotation
 # including the text it "covers" and the type (i.e. "concept") of the annotation
@@ -192,6 +195,13 @@ def clearPyConTextRegularExpressions():
     if len(pyConTextGraph.compiledRegExprs) > 0:
         print('Clearing pyConText compiled regular expressions')
         pyConTextGraph.compiledRegExprs = {}
+
+def view_single_sentence_graph(sentence, modifiers, targets):
+    context = markup_context_document(sentence, modifiers, targets)
+    class_result = classrslts(context_document=context, exam_type="Chest X-Ray", report_text=sentence, classification_result='N/A')
+    rview.markup_to_pydot(class_result)
+    display(Image("tmp.png"))
+    print(sentence)
         
         
 class DocumentClassifier(object):
