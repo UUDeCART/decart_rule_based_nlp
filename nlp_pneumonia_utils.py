@@ -4,6 +4,7 @@ import codecs
 import sklearn.metrics
 import pandas as pd
 from pyConTextNLP import pyConTextGraph
+from textblob import TextBlob
 
 # this class encapsulates all data related to a span (text sequence) annotation
 # including the text it "covers" and the type (i.e. "concept") of the annotation
@@ -191,3 +192,155 @@ def clearPyConTextRegularExpressions():
     if len(pyConTextGraph.compiledRegExprs) > 0:
         print('Clearing pyConText compiled regular expressions')
         pyConTextGraph.compiledRegExprs = {}
+        
+        
+class DocumentClassifier(object):
+    def __init__(self, ruleFile, debug=False, modifiers=None, targets=None):
+        self.rules = {}
+        self.rules_ele_list = {}
+        self.conclusions = []
+        self.debug = debug
+        self.modifiers = modifiers
+        self.targets = targets
+        if ruleFile is not None:
+            if ruleFile.endswith('.csv') or ruleFile.endswith('.tsv') or ruleFile.endswith('.txt'):
+                f = open(os.path.join(os.getcwd(), ruleFile), 'r')
+                rows = f.readlines()
+            else:
+                rows = ruleFile.split('\n')
+        else:
+            print('DocumentClassifier can only take rules in string or in csv, tsv or txt file')
+        priority = 0
+        for row in rows:
+            row = row.strip()
+            if len(row) == 0:
+                continue
+            if row.startswith('#'):
+                continue
+            cells = row.split('\t')
+            if len(cells) == 1:
+                self.default_conclusion = cells[0]
+                continue
+            conclusion = cells[0]
+            annotation_type = cells[1]
+            if annotation_type not in self.rules:
+                self.rules[annotation_type] = []
+            rules = self.rules[annotation_type]
+            rules.append(priority)
+
+            self.rules_ele_list[priority] = set(cells[2:])
+            self.conclusions.append(conclusion)
+            priority += 1
+
+    def setModifiersTargets(self, modifiers, targets):
+        self.modifiers = modifiers
+        self.targets = targets
+
+    def setModifiersTargetsFromFiles(self, modifiers_file, targets_file):
+        self.modifiers = pyConTextNLP.itemData.instantiateFromCSVtoitemData(os.path.join(os.getcwd(), modifiers_file))
+        self.targets = pyConTextNLP.itemData.instantiateFromCSVtoitemData(os.path.join(os.getcwd(), targets_file))
+
+    def checkMatch(self, annotation_type, modifiers, current_conclusions):
+        if annotation_type not in self.rules:
+            return
+        for priority in self.rules[annotation_type]:
+            if len(self.rules_ele_list[priority]) == 0:
+                if len(modifiers) == 0:
+                    if annotation_type not in current_conclusions or current_conclusions[annotation_type] > priority:
+                        current_conclusions[annotation_type] = priority
+            elif self.rules_ele_list[priority].issubset(modifiers):
+                if annotation_type not in current_conclusions or current_conclusions[annotation_type] > priority:
+                    current_conclusions[annotation_type] = priority
+                break;
+
+    def predict(self, doc, expected_value='indicate_pneumonia'):
+        conclusions = self.classify_doc(doc)
+        if expected_value in conclusions:
+            return 1
+        return 0
+
+    def classify_doc(self, doc):
+        if self.modifiers is None or self.targets is None:
+            print('DocumentClassifier\'s "modifiers" and/or "targets" has not been set yet.\n' +
+                  'Use function: setModifiersTargets(modifiers, targets) or setModifiersTargetsFromFiles(modifiers_file,' + 'targets_file) to set them up.')
+        markups = markup_context_document(doc, self.modifiers, self.targets)
+        return self.classify_markups(markups)
+
+    def classify_markups(self, markups):
+        current_conclusions = {}
+        annotation_id_modifiers = {}
+        annotation_id_type = {}
+        nodes_on_edge = set()
+        if self.debug:
+            annotation_id_phrase = {}
+        # regroup  modifiers by each annotation
+        for e in markups.getDocumentGraph().edges():
+            annotation_id = e[1].getTagID()
+            nodes_on_edge.add(annotation_id)
+            annotation_type = e[1].getCategory()[0]
+            modifier = e[0].getCategory()[0]
+            nodes_on_edge.add(e[0].getTagID())
+            if annotation_id not in annotation_id_modifiers:
+                annotation_id_modifiers[annotation_id] = set()
+            annotation_id_modifiers[annotation_id].add(modifier)
+            annotation_id_type[annotation_id] = annotation_type
+            if self.debug:
+                annotation_id_phrase[annotation_id] = e[1].getPhrase()
+
+        # add annotations with no modifier
+        for node in markups.getDocumentGraph().nodes():
+            if node.getTagID() not in nodes_on_edge:
+                annotation_id = node.getTagID()
+                annotation_id_modifiers[annotation_id] = set()
+                annotation_id_type[annotation_id] = node.getCategory()[0]
+                if self.debug:
+                    annotation_id_phrase[annotation_id] = node.getPhrase()
+
+        # update decision for each annotation and its modifiers in its id order (assume the ids are assigned based on the positions)
+        for annotation_id in sorted(annotation_id_type.keys()):
+            annotation_type = annotation_id_type[annotation_id]
+            modifiers = annotation_id_modifiers[annotation_id]
+            self.checkMatch(annotation_type, modifiers, current_conclusions)
+            if self.debug:
+                print('Based on annotation: "' + annotation_id_phrase[
+                    annotation_id] + '" has type: \t"' + annotation_type + '"\twith modifiers: ' + str(modifiers))
+                print('\tCurrent conclusion is:\t' + str(self.get_conclusion_set(current_conclusions)) + '\n')
+
+        if len(current_conclusions) == 0:
+            return {self.default_conclusion}
+        return self.get_conclusion_set(current_conclusions)
+
+    def get_conclusion_set(self, current_conclusions):
+        conclusion = set()
+        for priority in current_conclusions.values():
+            conclusion.add(self.conclusions[priority])
+        return conclusion
+    
+def markup_sentence(s, modifiers, targets, prune_inactive=True, verbose=False):
+    """
+    """
+    markup = pyConTextGraph.ConTextMarkup()
+    markup.setRawText(s)
+    markup.cleanText()
+    markup.markItems(targets, mode="target")
+    markup.markItems(modifiers, mode="modifier")
+    markup.pruneMarks()
+    markup.dropMarks('Exclusion')
+    # apply modifiers to any targets within the modifiers scope
+    markup.applyModifiers()
+    markup.pruneSelfModifyingRelationships()
+    if prune_inactive:
+        markup.dropInactiveModifiers()
+    return markup
+
+
+def markup_context_document(report_text, modifiers, targets):
+    context = pyConTextGraph.ConTextDocument()
+
+    # we will use TextBlob for breaking up sentences
+    sentences = [s.raw for s in TextBlob(report_text).sentences]
+    for sentence in sentences:
+        m = markup_sentence(sentence, modifiers=modifiers, targets=targets)
+        context.addMarkup(m)
+
+    return context    
