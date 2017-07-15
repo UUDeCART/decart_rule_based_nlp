@@ -222,8 +222,8 @@ class DocumentClassifier(object):
             print('DocumentClassifier can only take rules in string or in csv, tsv or txt file')
             
         if modifiers is not None and targets is not None:
-            if (modifiers.endswith('.csv') or modifiers.endswith('.tsv') or modifiers.endswith('.txt'))
-            and (targets.endswith('.csv') or targets.endswith('.tsv') or targets.endswith('.txt')):
+            if (modifiers.endswith('.csv') or modifiers.endswith('.tsv') or modifiers.endswith('.txt'))\
+                and (targets.endswith('.csv') or targets.endswith('.tsv') or targets.endswith('.txt')):
                 setModifiersTargetsFromFiles(modifiers,targets)
             else:
                 setModifiersTargets(modifiers,targets)
