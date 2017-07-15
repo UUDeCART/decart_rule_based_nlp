@@ -5,6 +5,7 @@ import sklearn.metrics
 import pandas as pd
 import pyConTextNLP
 from pyConTextNLP import pyConTextGraph
+from pyConTextNLP.itemData import itemData
 from textblob import TextBlob
 from radnlp.data import classrslts
 import radnlp.view as rview
@@ -221,11 +222,12 @@ class DocumentClassifier(object):
                 rows = ruleFile.split('\n')
         else:
             print('DocumentClassifier can only take rules in string or in csv, tsv or txt file')
-            
+             
         if modifiers is not None and targets is not None:
-            if (modifiers.endswith('.csv') or modifiers.endswith('.tsv') or modifiers.endswith('.txt'))\
-                and (targets.endswith('.csv') or targets.endswith('.tsv') or targets.endswith('.txt')):
-                self.setModifiersTargetsFromFiles(modifiers,targets)
+            if isinstance(modifiers, str) and isinstance(targets, str):
+                if (modifiers.endswith('.csv') or modifiers.endswith('.tsv') or modifiers.endswith('.txt'))\
+                    and (targets.endswith('.csv') or targets.endswith('.tsv') or targets.endswith('.txt')):
+                    self.setModifiersTargetsFromFiles(modifiers,targets)
             else:
                 self.setModifiersTargets(modifiers,targets)
                 
@@ -278,19 +280,23 @@ class DocumentClassifier(object):
             return 1
         return 0
 
-    def classify_doc(self, doc):
+    def classify_doc(self, doc,debug=None):
+        if debug is None:
+            debug=self.debug
         if self.modifiers is None or self.targets is None:
             print('DocumentClassifier\'s "modifiers" and/or "targets" has not been set yet.\n' +
                   'Use function: setModifiersTargets(modifiers, targets) or setModifiersTargetsFromFiles(modifiers_file,' + 'targets_file) to set them up.')
         markups = markup_context_document(doc, self.modifiers, self.targets)
-        return self.classify_markups(markups)
+        return self.classify_markups(markups,debug)
 
-    def classify_markups(self, markups):
+    def classify_markups(self, markups,debug=None):
+        if debug is None:
+            debug=self.debug
         current_conclusions = {}
         annotation_id_modifiers = {}
         annotation_id_type = {}
         nodes_on_edge = set()
-        if self.debug:
+        if debug:
             annotation_id_phrase = {}
         # regroup  modifiers by each annotation
         for e in markups.getDocumentGraph().edges():
@@ -303,7 +309,7 @@ class DocumentClassifier(object):
                 annotation_id_modifiers[annotation_id] = set()
             annotation_id_modifiers[annotation_id].add(modifier)
             annotation_id_type[annotation_id] = annotation_type
-            if self.debug:
+            if debug:
                 annotation_id_phrase[annotation_id] = e[1].getPhrase()
 
         # add annotations with no modifier
@@ -312,7 +318,7 @@ class DocumentClassifier(object):
                 annotation_id = node.getTagID()
                 annotation_id_modifiers[annotation_id] = set()
                 annotation_id_type[annotation_id] = node.getCategory()[0]
-                if self.debug:
+                if debug:
                     annotation_id_phrase[annotation_id] = node.getPhrase()
 
         # update decision for each annotation and its modifiers in its id order (assume the ids are assigned based on the positions)
@@ -320,7 +326,7 @@ class DocumentClassifier(object):
             annotation_type = annotation_id_type[annotation_id]
             modifiers = annotation_id_modifiers[annotation_id]
             self.checkMatch(annotation_type, modifiers, current_conclusions)
-            if self.debug:
+            if debug:
                 print('Based on annotation: "' + annotation_id_phrase[
                     annotation_id] + '" has type: \t"' + annotation_type + '"\twith modifiers: ' + str(modifiers))
                 print('\tCurrent conclusion is:\t' + str(self.get_conclusion_set(current_conclusions)) + '\n')
