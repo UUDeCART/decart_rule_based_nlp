@@ -3,6 +3,7 @@ import zipfile
 import codecs
 import sklearn.metrics
 import pandas as pd
+import pyConTextNLP
 from pyConTextNLP import pyConTextGraph
 from textblob import TextBlob
 from radnlp.data import classrslts
@@ -224,9 +225,9 @@ class DocumentClassifier(object):
         if modifiers is not None and targets is not None:
             if (modifiers.endswith('.csv') or modifiers.endswith('.tsv') or modifiers.endswith('.txt'))\
                 and (targets.endswith('.csv') or targets.endswith('.tsv') or targets.endswith('.txt')):
-                setModifiersTargetsFromFiles(modifiers,targets)
+                self.setModifiersTargetsFromFiles(modifiers,targets)
             else:
-                setModifiersTargets(modifiers,targets)
+                self.setModifiersTargets(modifiers,targets)
                 
         priority = 0
         for row in rows:
