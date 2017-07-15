@@ -4,11 +4,14 @@ be ruled out	INDICATION		backward
 being ruled out	INDICATION		backward				
 can be ruled out	DEFINITE_NEGATED_EXISTENCE		backward				
 cannot be excluded	AMBIVALENT_EXISTENCE		backward				
+cannot totally be excluded	PROBABLE_NEGATED_EXISTENCE		backward				
 could be ruled out	DEFINITE_NEGATED_EXISTENCE		backward				
 examination	INDICATION	\b(examination|exam|study)\b	backward				
 free	DEFINITE_NEGATED_EXISTENCE		backward				
+has been ruled out	DEFINITE_NEGATED_EXISTENCE		backward				
 have been ruled out	DEFINITE_NEGATED_EXISTENCE		backward				
 is in the differential	AMBIVALENT_EXISTENCE	is\sin\sthe\sdifferential	backward				
+is negative	DEFINITE_NEGATED_EXISTENCE	(is|was) negative	backward				
 is not excluded	AMBIVALENT_EXISTENCE	(is|was|are|were)\snot\sexcluded	backward				
 is not entirely excluded	PROBABLE_NEGATED_EXISTENCE	(is|was|are|were|does)\snot\s(entirely|totally|definitely|completely\s) excluded	backward	2/28/2013	added definitely	removed ed	
 is present	DEFINITE_EXISTENCE	(is|are) present	backward	4/29/2013			
@@ -25,6 +28,7 @@ ought to be ruled out	INDICATION		backward
 progressed	HISTORICAL		backward	3/22/2013			
 protocol	INDICATION		backward				
 resolved	HISTORICAL		backward				
+should be ruled out	INDICATION		backward				
 suspected	PROBABLE_EXISTENCE		backward	4/29/2013			
 unlikely	DEFINITE_NEGATED_EXISTENCE		bidirectional				
 varying ages	HISTORICAL		backward				
@@ -103,6 +107,7 @@ declined	DEFINITE_NEGATED_EXISTENCE		forward
 declines	PROBABLE_NEGATED_EXISTENCE		forward				
 decrease in	HISTORICAL		forward		make regular expression to capture variations		
 decrease in	HISTORICAL		forward				
+definite	DEFINITE_EXISTENCE		forward				
 denied	PROBABLE_NEGATED_EXISTENCE		forward				
 denies	PROBABLE_NEGATED_EXISTENCE		forward				
 deny	PROBABLE_NEGATED_EXISTENCE		forward				
@@ -133,6 +138,7 @@ may represent	PROBABLE_EXISTENCE	(may|might)\s(represent|reflect)	forward
 might be ruled out for	PROBABLE_NEGATED_EXISTENCE		forward				
 mimicking	PROBABLE_NEGATED_EXISTENCE		forward	3/22/2013			
 must be ruled out for	DEFINITE_NEGATED_EXISTENCE		forward				
+negative examination for	DEFINITE_NEGATED_EXISTENCE	negative (examination|study|exam|evaluation) for	forward				
 negative for	DEFINITE_NEGATED_EXISTENCE		forward				
 never developed	PROBABLE_NEGATED_EXISTENCE		forward				
 never had	DEFINITE_NEGATED_EXISTENCE		forward				
@@ -143,6 +149,9 @@ no complaints of	AMBIVALENT_EXISTENCE		forward
 no convincing	PROBABLE_NEGATED_EXISTENCE		forward				
 no definite	DEFINITE_NEGATED_EXISTENCE	no[\s]*definite	forward				
 no definite change	HISTORICAL		forward	need regular expression			
+no evidence of	DEFINITE_NEGATED_EXISTENCE	(no|without)\s((definite|other|definitive|secondary|indirect)\s)?((radiographic|sonographic|CT)\s)?evidence\s(of|for)	forward	2/28/2013	added other probably consider simplifying re as XYZ		
+no findings of	PROBABLE_NEGATED_EXISTENCE		forward				
+no findings to indicate	DEFINITE_NEGATED_EXISTENCE		forward				
 no increase	HISTORICAL		forward	4/16/2013			
 no new	DEFINITE_NEGATED_EXISTENCE		forward				
 no obvious	PROBABLE_NEGATED_EXISTENCE		forward				
@@ -294,6 +303,7 @@ as the source for	CONJ		terminate
 as the source of	CONJ		terminate				
 as there are 	CONJ		terminate	2/14/2013			
 aside from	CONJ		terminate				
+but	CONJ		terminate				
 cause for	CONJ		terminate				
 cause of	CONJ		terminate				
 causes for	CONJ		terminate				
@@ -355,10 +365,13 @@ no suspicious	PROBABLE_NEGATED_EXISTENCE		forward
 not adequate to rule out	AMBIVALENT_EXISTENCE	not adequate to rule ((the patient|him|her)\s)?out	forward				
 not likely	DEFINITE_NEGATED_EXISTENCE		bidirectional				
 not only	PSEUDONEG		forward				
+reveals	DEFINITE_EXISTENCE		forward				
 seen best	PROBABLE_EXISTENCE		backward				
 signs of	PROBABLE_EXISTENCE		bidirectional				
 was not excluded	AMBIVALENT_EXISTENCE	(was|were) not excluded	backward				
 if	HYPOTHETICAL		forward				
+decrease	HISTORICAL	decrease|decreased|decreasing|reduction|reduced	bidirectional				
+increase	HISTORICAL	increase|increasing|increased	bidirectional				
 possibly	PROBABLE_EXISTENCE		forward				
 decrease the likelihood	PROBABLE_NEGATED_EXISTENCE	decreas[a-z]+(\sthe)? likelihood	forward				
 suspect	PROBABLE_EXISTENCE		forward				
