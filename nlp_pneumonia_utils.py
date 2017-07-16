@@ -122,11 +122,11 @@ def calculate_prediction_metrics(gold_docs, prediction_function):
 									  pd.Series(pred_labels, name='Predicted'))
 
 	print('Precision : {0}'.format(precision))
-	print('Recall : {0}'.format(recall))
-	print('F1: {0}'.format(f1))
+	print('Recall :    {0}'.format(recall))
+	print('F1:         {0}'.format(f1))
 
-	print('Confusion Matrix : ')
-	print(confusion_matrix_df)
+	print('\nConfusion Matrix : ')
+	display(confusion_matrix_df)
 
 
 def __insert_color_custom(txt, s, c):
