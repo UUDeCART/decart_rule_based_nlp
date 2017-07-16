@@ -107,7 +107,7 @@ def error_analyses_7():
     option_explanations['C']='Try again.'
     option_explanations['D']='Correct!'
     single_choice(option_explanations,'Choose the best answer:',\
-                 HTML('''<html><body>When you doing error analyses, if you see following pyConText graph plot: <img src="data/Selection_008.png"> <br/> and following snippet:<img src="data/Selection_009.png">, what can you conclude?<br/>
+                 HTML('''<html><body>When you doing error analyses, if you see following pyConText graph plot: <img src="images/Selection_008.png"> <br/> and following snippet:<img src="images/Selection_009.png">, what can you conclude?<br/>
 <ul>
   <li><b>A</b>: This is a false positive error</li>
   <li><b>B</b>: This is a false negative error.</li>
