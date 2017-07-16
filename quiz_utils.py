@@ -13,7 +13,7 @@ def single_choice(option_explanations, desc, func=None):
         clear_output(wait=True)
         if func is not None:
             display(func)
-        display(HTML('<html><body><span style="color: green;"><b>'+option_explanations[opts.value]+'</b><span></body></html>'))
+        display(HTML('<html><body><span style="color: green;">'+option_explanations[opts.value]+'<span></body></html>'))
 
     button.on_click(click)
     if func is not None:
@@ -35,8 +35,8 @@ def error_analyses_1():
     
 def error_analyses_2():
     option_explanations=OrderedDict()
-    option_explanations['list']='"list_false_negatives" will return a dictionary, which keys are the document names and values are the annotated documents.'
-    option_explanations['array']='"list_false_negatives" will return a dictionary, which keys are the document names and values are the annotated documents.'
+    option_explanations['list']='<b>"list_false_negatives"</b> will return a dictionary, which keys are the document names and values are the annotated documents.'
+    option_explanations['array']='<b>"list_false_negatives"</b> will return a dictionary, which keys are the document names and values are the annotated documents.'
     option_explanations['dictionary']='Correct!'
     single_choice(option_explanations,'Which is corret:',\
                  HTML('''<html><body>What type of data will be returned by the function <b>"list_false_negatives"</b>?</body></html>'''))
