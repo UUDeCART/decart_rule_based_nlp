@@ -51,7 +51,7 @@ def error_analyses_3():
 unremarkable. There is <span style="color: blue;">patchy opacity at the left lower lobe representing
 either atelectasis or consolidation</span>. No definite free air is identified.</body></html>'''))    
     
-def error_analyses_4():
+def doc_classify_1():
     option_explanations=OrderedDict()
     option_explanations['A']='The last answer is correct.'
     option_explanations['B']='The last answer is correct.'
@@ -68,7 +68,7 @@ def error_analyses_4():
 </body></html>'''))    
 
     
-def error_analyses_5():
+def doc_classify_2():
     option_explanations=OrderedDict()
     option_explanations['A']='The last answer is correct.'
     option_explanations['B']='The last answer is correct.'
@@ -84,7 +84,7 @@ def error_analyses_5():
 </ul>  
 </body></html>'''))
     
-def error_analyses_6():
+def doc_classify_3():
     option_explanations=OrderedDict()
     option_explanations['A']='The last answer is correct.'
     option_explanations['B']='The last answer is correct.'
