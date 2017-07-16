@@ -13,7 +13,7 @@ def single_choice(option_explanations, desc, func=None):
         clear_output(wait=True)
         if func is not None:
             display(func)
-        print(option_explanations[opts.value])
+        display(HTML('<html><body><span style="color: green;"><b>'+option_explanations[opts.value]+'</b><span></body></html>'))
 
     button.on_click(click)
     if func is not None:
