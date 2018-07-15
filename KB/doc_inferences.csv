@@ -1,0 +1,7 @@
+DocConclusion,EvidenceTypes
+# The rule in document inferences are processed from top to bottom.
+# If any one of the rules is matched, the rest rules below it will be skipped.
+# if the document has a EVIDENCE_OF_PNEUMONIA annotation, conclude PNEUMONIA_DOC_YES.
+PNEUMONIA_DOC_YES,EVIDENCE_OF_PNEUMONIA
+# if no above rule matched, conclude NEG_COLON_CA_DOC (default conclusion)
+PNEUMONIA_DOC_NO
