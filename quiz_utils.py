@@ -75,7 +75,7 @@ def doc_classify_2():
     option_explanations['C']='This answer is good, but the last one is more precise.'
     option_explanations['D']='Correct!'
     single_choice(option_explanations,'Choose the best answer:',\
-                 HTML('''<html><body>If you see a rule for the DocumentClassifier has two items: <b>"possible_diabetes&nbsp;&nbsp;&nbsp;&nbsp;high_glucose_test"</b>, what does this rule means?:
+                 HTML('''<html><body>If you see a rule for the DocumentClassifier has two items: <b>"possible_diabetes,high_glucose_test"</b>, what does this rule means?:
 <ul>
   <li><b>A</b>: If find a string "high_glucose_test" in the document, conclude "possible_diabetes".</li>
   <li><b>B</b>: If find an annotation with type "possible_diabetes", suggest "high_glucose_test".</li>
@@ -91,12 +91,12 @@ def doc_classify_3():
     option_explanations['C']='Try again.'
     option_explanations['D']='Correct!'
     single_choice(option_explanations,'Choose the best answer:',\
-                 HTML('''<html><body>If you see a rule for the DocumentClassifier has two items: <b>"possible_anemia&nbsp;&nbsp;&nbsp;&nbsp;anemia&nbsp;&nbsp;&nbsp;&nbsp;definite_existence&nbsp;&nbsp;&nbsp;&nbsp;probable_existence"</b>, what does this rule means?:
+                 HTML('''<html><body>If you see a feature inference rule: <b>"possible_anemia,anemia,probable_existence"</b>, what will this rule do?:
 <ul>
   <li><b>A</b>: If find an annotation with type "anemia", conclude "possible_anemia".</li>
   <li><b>B</b>: If find an annotation with type "anemia", "definite_existence" or "probable_existence", conclude "possible_anemia".</li>
   <li><b>C</b>: If find an annotation with type "anemia" and with a modifier value either "definite_existence" or "probable_existence", conclude "possible_anemia".</li>
-  <li><b>D</b>: If find an annotation that has type "anemia" and its modifier values include both "definite_existence" and "probable_existence", conclude "possible_anemia".</li>
+  <li><b>D</b>: If find an annotation that has type "anemia" and its modifier values include "probable_existence", conclude "possible_anemia".</li>
 </ul>  
 </body></html>'''))  
     
