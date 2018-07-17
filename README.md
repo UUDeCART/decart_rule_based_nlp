@@ -8,3 +8,5 @@ More info on the course can be found here:
 https://datascience4health.bmi.utah.edu/develop-nlp/
 
 Presenters : Dr.Wendy Chapman, Jianlin Shi
+
+## Topics:
