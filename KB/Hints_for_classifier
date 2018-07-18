@@ -1,0 +1,36 @@
+Your classifier should assign one of these values to each report:
+PNEUMONIA_DOC_YES
+PNEUMONIA_DOC_NO
+
+Below are the categories assigned by modifiers to targets (an counts of the number of modifiers in the file that assign those categories). You will use these categories (which are output by pyConText for each target) to create your rules for classifying a document. Not all targets that provide evidence for pneumonia are assigned categories by modifiers. For example, "Consolidation is evident in right lower lobe." Consolidation is a target that has the category EVIDENCE_OF_PNEUMONIA, but it has no modifier-assigned categories. Whereas "No evidence of consolidation" will generate a target with the category EVIDENCE_OF_PNEUMONIA and with the following modifier-assigned categories: DEFINITE_NEGATED_EXISTENCE.
+
+
+
+Temporal modifiers:
+No modifier
+ACUTE                          3
+HISTORICAL                    50
+FUTURE                         8
+HYPOTHETICAL                   1
+ 
+Indication modifiers:
+No modifier
+INDICATION                    31
+ 
+Negation modifiers:
+No modifier
+DEFINITE_EXISTENCE            17
+PROBABLE_EXISTENCE            29
+AMBIVALENT_EXISTENCE          27
+PROBABLE_NEGATED_EXISTENCE    42
+DEFINITE_NEGATED_EXISTENCE    72
+ 
+Experiencer: (our modifier file does not contain any experiencer modifiers, like family members, because radiology reports do not typically mention anything experienced by anyone other than the patient, whose exam they are reviewing.
+No modifier
+ 
+Modifiers that do not assign values to a target: 
+PSEUDONEG                      8
+CONJ                          92
+ 
+ 
+
