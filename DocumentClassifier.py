@@ -160,16 +160,19 @@ class FeatureInferencer(object):
         for target_id, modifiers in sorted_modifiers.items():
             source_type = annotations_idx.loc[target_id, 'type']
             for rule_id, modifiers_in_rule in match_checker[source_type].items():
-                if modifiers_in_rule == modifiers or modifiers_in_rule == set(''):
+
+                if modifiers_in_rule == modifiers or '' in modifiers_in_rule:
                     matched_conclusion_types.append(inference_map[source_type][rule_id])
                     targets.remove(target_id)
 
         for source_type, matcher in match_checker.items():
             for rule_id, condition_values in matcher.items():
-                if len(condition_values) == 0:
-                    for anno in annotations:
+                if len(condition_values) == 0 or '' in condition_values:
+                    for index, anno in annotations.iterrows():
                         if anno['type'] == source_type:
                             matched_conclusion_types.append(inference_map[source_type][rule_id])
+                            if anno['markup_id'] in targets:
+                                targets.remove(anno['markup_id'])
 
         for target_id in targets:
             type = annotations.loc[annotations['markup_id'] == target_id, 'type'].iloc[0]
