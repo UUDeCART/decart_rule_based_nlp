@@ -161,7 +161,7 @@ class FeatureInferencer(object):
             source_type = annotations_idx.loc[target_id, 'type']
             for rule_id, modifiers_in_rule in match_checker[source_type].items():
 
-                if modifiers_in_rule == modifiers or '' in modifiers_in_rule:
+                if modifiers_in_rule < modifiers or modifiers_in_rule == modifiers or '' in modifiers_in_rule:
                     matched_conclusion_types.append(inference_map[source_type][rule_id])
                     if target_id in targets:
                         targets.remove(target_id)
