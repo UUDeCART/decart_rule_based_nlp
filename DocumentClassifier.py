@@ -163,7 +163,8 @@ class FeatureInferencer(object):
 
                 if modifiers_in_rule == modifiers or '' in modifiers_in_rule:
                     matched_conclusion_types.append(inference_map[source_type][rule_id])
-                    targets.remove(target_id)
+                    if target_id in targets:
+                        targets.remove(target_id)
 
         for source_type, matcher in match_checker.items():
             for rule_id, condition_values in matcher.items():
