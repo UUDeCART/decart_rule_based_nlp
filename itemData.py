@@ -174,7 +174,7 @@ def get_item_data(file_str):
             file_str = os.path.join(pwd, file_str)
         if not os.path.exists(file_str):
             return itemData()
-        if file_name.endswith('csv') or file_name.endswith('tsv'):
+        if file_name.endswith('csv') or file_name.endswith('tsv'):            
             return instantiateFromCSVtoitemData(file_str)
         elif file_name.endswith('yml'):
             return instantiateFromYMLtoitemData(file_str)
