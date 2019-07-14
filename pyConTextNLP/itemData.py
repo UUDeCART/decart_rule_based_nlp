@@ -211,7 +211,7 @@ def instantiateFromYMLStr(content):
     context_items = [contextItem((d["Lex"],
                                   d["Type"],
                                   r"%s" % d["Regex"],
-                                  d["Direction"])) for d in yaml.load_all(content)]
+                                  d["Direction"])) for d in yaml.safe_load_all(content)]
     return context_items
 
 
@@ -225,7 +225,7 @@ def instantiateFromYMLtoitemData(_file):
     context_items = [contextItem((d["Lex"],
                                   d["Type"],
                                   r"%s" % d["Regex"],
-                                  d["Direction"])) for d in yaml.load_all(f0)]
+                                  d["Direction"])) for d in yaml.safe_load_all(f0)]
     return context_items
 
 
