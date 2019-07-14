@@ -5,6 +5,12 @@ Regex: ''
 Type: DEFINITE_NEGATED_EXISTENCE
 ---
 Comments: ''
+Direction: forward
+Lex: no evidence of
+Regex: ''
+Type: DEFINITE_NEGATED_EXISTENCE
+---
+Comments: ''
 Direction: backward
 Lex: cannot totally be excluded
 Regex: ''
