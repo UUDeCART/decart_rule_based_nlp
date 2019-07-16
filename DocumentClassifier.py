@@ -79,7 +79,7 @@ class DocumentClassifier(object):
         prediction_metrics.append('Recall :    {0:.3f}'.format(recall))
         prediction_metrics.append('F1:         {0:.3f}'.format(f1))
 
-        return fn_docs, fp_docs, '\n'.join(prediction_metrics), confusion_matrix_df[[1, 0]].reindex([1, 0])
+        return fn_docs, fp_docs, '\n'.join(prediction_metrics), confusion_matrix_df)
 
     def predict_against(self, doc, expected_values, doc_name='t_m_p.txt'):
         doc_conclusion = self.classify_doc(doc, doc_name)
