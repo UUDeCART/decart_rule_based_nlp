@@ -11,16 +11,22 @@ Regex: ''
 Type: DEFINITE_NEGATED_EXISTENCE
 ---
 Comments: ''
+Direction: forward
+Lex: no
+Regex: '\b(NO)|(no)\b'
+Type: DEFINITE_NEGATED_EXISTENCE
+---
+Comments: ''
 Direction: backward
 Lex: cannot totally be excluded
-Regex: ''
+Regex: 'cannot (totally )?be excluded'
 Type: PROBABLE_NEGATED_EXISTENCE
 ---
 Comments: ''
 Direction: backward
 Lex: could be ruled out
 Regex: ''
-Type: DEFINITE_NEGATED_EXISTENCE
+Type: PROBABLE_NEGATED_EXISTENCE
 ---
 Comments: ''
 Direction: terminate
@@ -35,9 +41,15 @@ Regex: ''
 Type: CONJ
 ---
 Comments: ''
+Direction: terminate
+Lex: however
+Regex: ''
+Type: CONJ
+---
+Comments: ''
 Direction: bidirectional
 Lex: decrease
-Regex: decrease|decreased|decreasing|reduction|reduced|resolved
+Regex: decrease|decreased|decreasing|reduction|reduced|history of
 Type: HISTORICAL
 ---
 Comments: ''
@@ -45,3 +57,15 @@ Direction: bidirectional
 Lex: risk factor
 Regex: risk factor(s)?
 Type: FUTURE
+---
+Comments: ''
+Direction: backward
+Lex: R/O
+Regex: ''
+Type: INIDCATION
+---
+Comments: ''
+Direction: backward
+Lex: REASON FOR THIS EXAMINATION
+Regex: ''
+Type: INIDCATION
