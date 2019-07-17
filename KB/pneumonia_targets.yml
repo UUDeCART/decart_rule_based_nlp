@@ -1,5 +1,11 @@
 Comments: ''
 Direction: ''
+Lex: bronchogram
+Regex: '\bbronchogram'
+Type: EVIDENCE_OF_PNEUMONIA
+---
+Comments: ''
+Direction: ''
 Lex: consolidation
 Regex: ''
 Type: EVIDENCE_OF_PNEUMONIA
@@ -7,11 +13,23 @@ Type: EVIDENCE_OF_PNEUMONIA
 Comments: ''
 Direction: ''
 Lex: pneumonia
-Regex: \bpneumonia[s]?\b
+Regex: '\bpneumonia'
 Type: EVIDENCE_OF_PNEUMONIA
 ---
 Comments: ''
 Direction: ''
 Lex: infiltrate
+Regex: ''
+Type: EVIDENCE_OF_PNEUMONIA
+---
+Comments: ''
+Direction: ''
+Lex: opacity
+Regex: ''
+Type: EVIDENCE_OF_PNEUMONIA
+---
+Comments: ''
+Direction: ''
+Lex: opacification
 Regex: ''
 Type: EVIDENCE_OF_PNEUMONIA
