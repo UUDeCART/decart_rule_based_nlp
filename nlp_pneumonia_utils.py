@@ -5,7 +5,7 @@ import codecs
 import sklearn.metrics
 import pandas as pd
 import pyConTextNLP
-from pyConTextNLP import pyConTextGraph
+from pyConTextNLP import pyConText
 from textblob import TextBlob
 from radnlp.data import classrslts
 import radnlp.view as rview
@@ -246,9 +246,9 @@ def mark_document_with_html(doc, colors={"name": "red", "pet": "blue"}, default_
 
 
 def clearPyConTextRegularExpressions():
-    if len(pyConTextGraph.compiledRegExprs) > 0:
+    if len(pyConText.compiledRegExprs) > 0:
         print('Clearing pyConText compiled regular expressions')
-        pyConTextGraph.compiledRegExprs = {}
+        pyConText.compiledRegExprs = {}
 
 
 def view_single_sentence_graph(sentence, modifiers, targets):
@@ -421,7 +421,7 @@ class DocumentClassifier(object):
 def markup_sentence(s, modifiers, targets, prune_inactive=True, verbose=False):
     """
     """
-    markup = pyConTextGraph.ConTextMarkup()
+    markup = pyConText.ConTextMarkup()
     markup.setRawText(s)
     markup.cleanText()
     markup.markItems(targets, mode="target")
@@ -437,7 +437,7 @@ def markup_sentence(s, modifiers, targets, prune_inactive=True, verbose=False):
 
 
 def markup_context_document(report_text, modifiers, targets):
-    context = pyConTextGraph.ConTextDocument()
+    context = pyConText.ConTextDocument()
 
     # we will use TextBlob for breaking up sentences
     sentences = [s.raw for s in TextBlob(report_text).sentences]

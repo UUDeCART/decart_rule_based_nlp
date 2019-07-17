@@ -1,0 +1,47 @@
+Comments: ''
+Direction: backward
+Lex: can be ruled out
+Regex: ''
+Type: DEFINITE_NEGATED_EXISTENCE
+---
+Comments: ''
+Direction: forward
+Lex: no evidence of
+Regex: ''
+Type: DEFINITE_NEGATED_EXISTENCE
+---
+Comments: ''
+Direction: backward
+Lex: cannot totally be excluded
+Regex: ''
+Type: PROBABLE_NEGATED_EXISTENCE
+---
+Comments: ''
+Direction: backward
+Lex: could be ruled out
+Regex: ''
+Type: DEFINITE_NEGATED_EXISTENCE
+---
+Comments: ''
+Direction: terminate
+Lex: although
+Regex: ''
+Type: CONJ
+---
+Comments: ''
+Direction: terminate
+Lex: but
+Regex: ''
+Type: CONJ
+---
+Comments: ''
+Direction: bidirectional
+Lex: decrease
+Regex: decrease|decreased|decreasing|reduction|reduced|resolved
+Type: HISTORICAL
+---
+Comments: ''
+Direction: bidirectional
+Lex: risk factor
+Regex: risk factor(s)?
+Type: FUTURE

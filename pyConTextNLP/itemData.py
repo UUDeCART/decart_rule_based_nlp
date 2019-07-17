@@ -20,7 +20,7 @@
 A module defining the itemData class. itemData objects are the basis tools for text markup.
 """
 import platform
-from yaml import CLoader as Loader
+
 import os
 import yaml
 
