@@ -11,16 +11,22 @@ Regex: ''
 Type: DEFINITE_NEGATED_EXISTENCE
 ---
 Comments: ''
+Direction: forward
+Lex: Negative
+Regex: '\bNO\b|\bno\b|\bNo\b'
+Type: DEFINITE_NEGATED_EXISTENCE
+---
+Comments: ''
 Direction: backward
 Lex: cannot totally be excluded
-Regex: ''
+Regex: 'cannot (totally )?be excluded'
 Type: PROBABLE_NEGATED_EXISTENCE
 ---
 Comments: ''
 Direction: backward
 Lex: could be ruled out
 Regex: ''
-Type: DEFINITE_NEGATED_EXISTENCE
+Type: PROBABLE_NEGATED_EXISTENCE
 ---
 Comments: ''
 Direction: terminate
@@ -35,9 +41,15 @@ Regex: ''
 Type: CONJ
 ---
 Comments: ''
+Direction: terminate
+Lex: however
+Regex: ''
+Type: CONJ
+---
+Comments: ''
 Direction: bidirectional
 Lex: decrease
-Regex: decrease|decreased|decreasing|reduction|reduced|resolved
+Regex: decrease|decreased|decreasing|reduction|reduced|history of|improve|improvement
 Type: HISTORICAL
 ---
 Comments: ''
@@ -45,3 +57,33 @@ Direction: bidirectional
 Lex: risk factor
 Regex: risk factor(s)?
 Type: FUTURE
+---
+Comments: ''
+Direction: forward
+Lex: R/O
+Regex: '\b[R]\/[O]\b'
+Type: INDICATION
+---
+Comments: ''
+Direction: backward
+Lex: REASON FOR THIS EXAMINATION
+Regex: ''
+Type: INDICATION
+---
+Comments: ''
+Direction: terminate
+Lex: 'MEDICAL'
+Regex: '\b(FINAL|REPORT|IMPRESSION|UNDERLYING MEDICAL CONDITION)\b'
+Type: CONJ
+---
+Comments: ''
+Direction: forward
+Lex: Negative
+Regex: '(check|[Ee]valuate|reason)( for)?'
+Type: DEFINITE_NEGATED_EXISTENCE
+---
+Comments: ''
+Direction: forward
+Lex: atelectasis
+Regex: ''
+Type: DEFINITE_NEGATED_EXISTENCE
